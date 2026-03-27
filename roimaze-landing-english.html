@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROI Maze – Performance Marketing Agency | Delhi NCR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:   #04040a;
+  --deep:    #080812;
+  --card:    #0c0c1a;
+  --border:  rgba(124,77,255,0.16);
+  --purple:  #7c4dff;
+  --violet:  #9b6dff;
+  --glow:    #c084fc;
+  --accent:  #00d4ff;
+  --text:    #dcdce8;
+  --muted:   #7a7a9a;
+  --white:   #ffffff;
+  --green:   #00e87a;
+  --gold:    #ffc947;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--black);color:var(--text);overflow-x:hidden;line-height:1.6}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.6}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:16px 6%;display:flex;align-items:center;justify-content:space-between;background:rgba(4,4,10,0.82);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:900;color:var(--white);letter-spacing:-.5px}
+.logo span{color:var(--violet)}
+nav ul{display:flex;gap:36px;list-style:none}
+nav ul li a{color:var(--muted);text-decoration:none;font-size:.88rem;font-weight:500;letter-spacing:.2px;transition:color .2s}
+nav ul li a:hover{color:var(--white)}
+.nav-cta{background:var(--purple);color:#fff;padding:10px 24px;border-radius:7px;font-size:.85rem;font-weight:600;text-decoration:none;letter-spacing:.3px;transition:.2s;white-space:nowrap}
+.nav-cta:hover{background:var(--violet);box-shadow:0 0 24px rgba(124,77,255,.45)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:22px;height:2px;background:var(--text);border-radius:2px}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding:130px 6% 90px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(124,77,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(124,77,255,.05) 1px,transparent 1px);background-size:64px 64px;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
+.orb1{width:560px;height:560px;background:radial-gradient(circle,rgba(124,77,255,.28),transparent 68%);top:-120px;right:-120px}
+.orb2{width:380px;height:380px;background:radial-gradient(circle,rgba(0,212,255,.13),transparent 68%);bottom:-80px;left:-80px}
+.hero-content{position:relative;z-index:2;max-width:820px}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;background:rgba(124,77,255,.1);border:1px solid rgba(124,77,255,.25);padding:8px 18px;border-radius:50px;font-size:.8rem;color:var(--glow);font-weight:500;letter-spacing:.4px;margin-bottom:30px}
+.badge-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:blink 1.6s ease-in-out infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,6.5vw,4.8rem);font-weight:900;line-height:1.08;letter-spacing:-1px;color:var(--white);margin-bottom:24px}
+h1 .gt{background:linear-gradient(130deg,var(--violet) 0%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.12rem;color:var(--muted);line-height:1.78;max-width:600px;margin-bottom:44px;font-weight:400}
+.hero-sub strong{color:var(--text);font-weight:600}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:60px}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--purple),var(--violet));color:#fff;padding:16px 34px;border-radius:9px;font-size:.97rem;font-weight:700;font-family:'Outfit',sans-serif;text-decoration:none;letter-spacing:.3px;box-shadow:0 0 44px rgba(124,77,255,.3);transition:.25s}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 50px rgba(124,77,255,.5)}
+.btn-wa{display:inline-flex;align-items:center;gap:10px;background:rgba(0,232,122,.08);border:1.5px solid rgba(0,232,122,.3);color:var(--green);padding:15px 30px;border-radius:9px;font-size:.97rem;font-weight:600;text-decoration:none;transition:.25s}
+.btn-wa:hover{background:rgba(0,232,122,.15);box-shadow:0 0 32px rgba(0,232,122,.18)}
+.hero-stats{display:flex;gap:52px;flex-wrap:wrap}
+.stat .num{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:900;color:var(--white);letter-spacing:-.5px}
+.stat .num em{font-style:normal;color:var(--violet)}
+.stat .lbl{font-size:.78rem;color:var(--muted);margin-top:3px;font-weight:400;letter-spacing:.3px}
+
+/* SECTIONS */
+section{padding:108px 6%;position:relative;z-index:1}
+.sec-tag{display:inline-flex;align-items:center;gap:10px;color:var(--violet);font-size:.75rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:18px}
+.sec-tag::before{content:'';width:22px;height:2px;background:var(--violet);border-radius:2px}
+h2{font-family:'Playfair Display',serif;font-size:clamp(2.1rem,4.2vw,3.2rem);font-weight:900;letter-spacing:-.8px;color:var(--white);line-height:1.12;margin-bottom:18px}
+h2 em{font-style:normal;color:var(--violet)}
+.sec-sub{color:var(--muted);font-size:1.03rem;max-width:580px;line-height:1.75;margin-bottom:68px;font-weight:400}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:0 6%}
+
+/* SERVICES */
+#services{background:var(--deep)}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(316px,1fr));gap:22px}
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:34px;position:relative;overflow:hidden;transition:.3s}
+.svc-card::after{content:'';position:absolute;inset:0;background:linear-gradient(140deg,rgba(124,77,255,.05),transparent 60%);pointer-events:none}
+.svc-card:hover{border-color:rgba(155,109,255,.5);transform:translateY(-5px);box-shadow:0 24px 64px rgba(124,77,255,.14)}
+.svc-ico{width:50px;height:50px;border-radius:13px;background:linear-gradient(135deg,rgba(124,77,255,.18),rgba(0,212,255,.08));border:1px solid rgba(124,77,255,.2);display:flex;align-items:center;justify-content:center;font-size:1.45rem;margin-bottom:22px}
+.svc-pill{position:absolute;top:18px;right:18px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);color:var(--accent);font-size:.68rem;font-weight:700;padding:4px 11px;border-radius:50px;letter-spacing:.8px;text-transform:uppercase}
+.svc-name{font-family:'Playfair Display',serif;font-size:1.18rem;font-weight:700;color:var(--white);margin-bottom:10px}
+.svc-desc{font-size:.88rem;color:var(--muted);line-height:1.68;margin-bottom:20px}
+.svc-list{list-style:none;margin-bottom:26px}
+.svc-list li{font-size:.86rem;color:var(--text);padding:5px 0;display:flex;align-items:flex-start;gap:9px;line-height:1.5}
+.svc-list li::before{content:'→';color:var(--violet);font-size:.78rem;flex-shrink:0;margin-top:3px}
+.svc-btn{display:inline-flex;align-items:center;gap:7px;color:var(--violet);font-size:.86rem;font-weight:600;text-decoration:none;border:1px solid rgba(124,77,255,.28);padding:10px 20px;border-radius:8px;transition:.2s;letter-spacing:.2px}
+.svc-btn:hover{background:rgba(124,77,255,.12);border-color:var(--violet)}
+
+/* WHY US */
+#why{background:var(--black)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(274px,1fr));gap:22px}
+.why-card{background:var(--card);border:1px solid var(--border);border-radius:15px;padding:30px;transition:.3s}
+.why-card:hover{border-color:rgba(155,109,255,.38);box-shadow:0 14px 44px rgba(124,77,255,.1)}
+.why-ico{font-size:1.9rem;margin-bottom:16px}
+.why-ttl{font-family:'Playfair Display',serif;font-size:1.04rem;font-weight:700;color:var(--white);margin-bottom:9px}
+.why-txt{font-size:.875rem;color:var(--muted);line-height:1.68}
+
+/* PROCESS */
+#process{background:var(--deep)}
+.proc-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;position:relative}
+.proc-wrap::before{content:'';position:absolute;top:35px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,transparent,var(--border) 20%,var(--border) 80%,transparent)}
+.proc-step{text-align:center;padding:24px 16px}
+.proc-num{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--violet));display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:#fff;box-shadow:0 0 32px rgba(124,77,255,.38);position:relative;z-index:1}
+.proc-ttl{font-family:'Playfair Display',serif;font-size:1.02rem;font-weight:700;color:var(--white);margin-bottom:10px}
+.proc-desc{font-size:.84rem;color:var(--muted);line-height:1.65}
+
+/* TESTIMONIALS */
+#testimonials{background:var(--black)}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+.testi-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:30px;transition:.3s}
+.testi-card:hover{border-color:rgba(155,109,255,.32);box-shadow:0 14px 44px rgba(124,77,255,.1)}
+.t-stars{color:var(--gold);font-size:.82rem;letter-spacing:3px;margin-bottom:16px}
+.t-quote{font-size:2.6rem;line-height:.8;color:var(--violet);opacity:.25;font-family:'Playfair Display',serif;margin-bottom:14px}
+.t-text{font-size:.9rem;color:var(--text);line-height:1.78;margin-bottom:22px;font-style:italic;font-weight:300}
+.t-author{display:flex;align-items:center;gap:13px}
+.t-av{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--accent));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:#fff;flex-shrink:0}
+.t-name{font-size:.9rem;font-weight:600;color:var(--white)}
+.t-role{font-size:.76rem;color:var(--muted);margin-top:3px}
+
+/* FAQ */
+#faq{background:var(--deep)}
+.faq-wrap{max-width:760px;display:flex;flex-direction:column;gap:13px}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.faq-q{width:100%;background:none;border:none;color:var(--white);font-family:'Outfit',sans-serif;font-size:.97rem;font-weight:600;text-align:left;padding:22px 26px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:color .2s;letter-spacing:.1px}
+.faq-q:hover{color:var(--violet)}
+.faq-icon{font-size:1.3rem;color:var(--violet);flex-shrink:0;transition:transform .3s}
+.faq-a{color:var(--muted);font-size:.89rem;line-height:1.75;padding:0 26px 22px;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-item.open{border-color:rgba(155,109,255,.3)}
+
+/* CTA */
+#cta-main{background:var(--black);text-align:center}
+.cta-box{max-width:920px;margin:0 auto;background:linear-gradient(140deg,rgba(124,77,255,.1),rgba(0,212,255,.05));border:1px solid rgba(155,109,255,.22);border-radius:26px;padding:80px 44px;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(124,77,255,.22),transparent 70%);top:-80px;right:-80px;pointer-events:none}
+.cta-urgency{display:inline-block;background:rgba(255,80,80,.08);border:1px solid rgba(255,100,100,.22);color:#ff8888;padding:8px 22px;border-radius:50px;font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:26px}
+.cta-box h2{margin-bottom:18px}
+.cta-box p{color:var(--muted);font-size:1.05rem;line-height:1.72;margin-bottom:44px;max-width:560px;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-secondary{display:inline-flex;align-items:center;gap:9px;background:transparent;border:1.5px solid rgba(255,255,255,.18);color:var(--text);padding:15px 30px;border-radius:9px;font-size:.95rem;font-weight:600;text-decoration:none;transition:.2s}
+.btn-secondary:hover{border-color:var(--violet);color:var(--violet)}
+
+/* CONTACT */
+#contact{background:var(--deep);padding-bottom:110px}
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;max-width:1040px}
+.contact-link{display:flex;align-items:center;gap:17px;padding:22px 26px;background:var(--card);border:1px solid var(--border);border-radius:14px;text-decoration:none;color:var(--text);transition:.25s;margin-bottom:14px}
+.contact-link:hover{border-color:rgba(155,109,255,.42);transform:translateX(5px)}
+.c-ico{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.ico-phone{background:rgba(0,212,255,.08)}
+.ico-mail{background:rgba(124,77,255,.1)}
+.ico-wa{background:rgba(0,232,122,.08)}
+.c-lbl{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:4px}
+.c-val{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--white)}
+.c-form{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:38px}
+.c-form-title{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:800;color:var(--white);margin-bottom:26px}
+.fg{margin-bottom:18px}
+.fg label{font-size:.78rem;color:var(--muted);font-weight:600;display:block;margin-bottom:7px;letter-spacing:.4px;text-transform:uppercase}
+.fg input,.fg select,.fg textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;padding:13px 16px;color:var(--white);font-family:'Outfit',sans-serif;font-size:.91rem;outline:none;transition:.2s;resize:none}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.2)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:rgba(155,109,255,.55);background:rgba(124,77,255,.05);box-shadow:0 0 0 3px rgba(124,77,255,.1)}
+.fg select option{background:var(--card);color:var(--white)}
+.f-submit{width:100%;background:linear-gradient(135deg,var(--purple),var(--violet));border:none;color:#fff;padding:15px;border-radius:9px;font-family:'Outfit',sans-serif;font-size:.97rem;font-weight:700;cursor:pointer;letter-spacing:.4px;transition:.25s}
+.f-submit:hover{transform:translateY(-2px);box-shadow:0 0 44px rgba(124,77,255,.4)}
+
+/* FOOTER */
+footer{background:var(--black);border-top:1px solid var(--border);padding:38px 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.foot-logo{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:900;color:var(--white)}
+.foot-logo span{color:var(--violet)}
+footer small{font-size:.79rem;color:var(--muted)}
+.foot-links{display:flex;gap:26px}
+.foot-links a{font-size:.8rem;color:var(--muted);text-decoration:none;transition:.2s}
+.foot-links a:hover{color:var(--violet)}
+
+/* FLOATING WA */
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:500;width:60px;height:60px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 28px rgba(0,232,122,.4);animation:floatbob 3.2s ease-in-out infinite}
+@keyframes floatbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.wa-float:hover{background:#00cc6c;box-shadow:0 6px 44px rgba(0,232,122,.6)}
+.wa-float svg{width:30px;height:30px;fill:#000}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:960px){nav ul{display:none}.hamburger{display:flex}.proc-wrap{grid-template-columns:1fr 1fr}.proc-wrap::before{display:none}.contact-layout{grid-template-columns:1fr}}
+@media(max-width:640px){h1{font-size:2.4rem;letter-spacing:-.5px}h2{font-size:2rem}section{padding:72px 5%}.hero-btns{flex-direction:column}.btn-primary,.btn-wa{justify-content:center}.cta-box{padding:52px 24px}.cta-btns{flex-direction:column;align-items:stretch}footer{flex-direction:column;text-align:center}.proc-wrap{grid-template-columns:1fr}.hero-stats{gap:28px}}
+</style>
+</head>
+<body>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/918587038293" target="_blank" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">ROI<span>Maze</span></div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#testimonials">Results</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/918587038293" target="_blank" class="nav-cta">WhatsApp Us ↗</a>
+  <div class="hamburger" onclick="toggleMenu(this)"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><div class="badge-dot"></div>Delhi NCR's Premier Performance Marketing Agency</div>
+    <h1>Stop Spending.<br>Start <span class="gt">Generating ROI.</span></h1>
+    <p class="hero-sub">We build <strong>data-driven marketing systems</strong> — Meta Ads, sales funnels, and automation — that convert your ad spend into measurable revenue. <strong>No guesswork. No wasted budget. Just results.</strong></p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">🎯 Get Free Strategy Session</a>
+      <a href="https://wa.me/918587038293" target="_blank" class="btn-wa">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#00e87a"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        WhatsApp Now
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="num">150<em>+</em></div><div class="lbl">Clients Served</div></div>
+      <div class="stat"><div class="num">₹5<em>Cr+</em></div><div class="lbl">Ad Spend Managed</div></div>
+      <div class="stat"><div class="num">3<em>×</em></div><div class="lbl">Average ROI Delivered</div></div>
+      <div class="stat"><div class="num">98<em>%</em></div><div class="lbl">Client Retention Rate</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== SERVICES ===== -->
+<section id="services">
+  <div class="sec-tag">Our Services</div>
+  <h2>Everything Your Business Needs<br>to <em>Grow &amp; Scale</em></h2>
+  <p class="sec-sub">Seven integrated services built to work together as one complete growth system — not isolated tactics.</p>
+  <div class="svc-grid">
+
+    <div class="svc-card reveal">
+      <div class="svc-pill">MOST POPULAR</div>
+      <div class="svc-ico">📱</div>
+      <div class="svc-name">Meta Ads (Facebook &amp; Instagram)</div>
+      <p class="svc-desc">Precision-targeted campaigns that reach buyers, not browsers. We eliminate wasted spend and maximise every rupee you invest.</p>
+      <ul class="svc-list">
+        <li>Laser-targeted audience research and full ad strategy</li>
+        <li>High-converting ad creatives with continuous split testing</li>
+        <li>Weekly performance reports with live dashboard access</li>
+      </ul>
+      <a href="https://wa.me/918587038293?text=Hi%2C%20I%20want%20to%20know%20more%20about%20Meta%20Ads" target="_blank" class="svc-btn">Get Started →</a>
+    </div>
+
+    <div class="svc-card reveal">
+      <div class="svc-ico">🎯</div>
+      <div class="svc-name">Lead Generation</div>
+      <p class="svc-desc">We deliver high-intent, verified leads directly to your inbox — people who are actively searching for what you offer.</p>
+      <ul class="svc-list">
+        <li>Qualified leads with name, number, and clear intent</li>
+        <li>Industry-specific targeting tailored to your niche</li>
+        <li>Seamless CRM integration for instant follow-up</li>
+      </ul>
+      <a href="https://wa.me/918587038293?text=Hi%2C%20I%20want%20quality%20leads%20for%20my%20business" target="_blank" class="svc-btn">Get Started →</a>
+    </div>
+
+    <div class="svc-card reveal">
+      <div class="svc-ico">🔄</div>
+      <div class="svc-name">Sales Funnels</div>
+      <p class="svc-desc">A complete system — from landing page to automated follow-up — engineered to convert curious visitors into paying clients, 24/7.</p>
+      <ul class="svc-list">
+        <li>High-converting landing pages with rigorous A/B testing</li>
+        <li>Automated email and WhatsApp follow-up sequences</li>
+        <li>Full analytics and end-to-end revenue attribution</li>
+      </ul>
+      <a href="https://wa.me/918587038293?text=Hi%2C%20I%20want%20a%20sales%20funnel%20for%20my%20business" target="_blank" class="svc-btn">Get Started →</a>
+    </div>
+
+    <div class="svc-card reveal">
+      <div class="svc-ico">⚡</div>
+      <div class="svc-name">Marketing Automation</div>
+      <p class="svc-desc">Configure it once and let the system nurture leads automatically. Email and WhatsApp automation that works as your 24/7 sales team.</p>
+      <ul class="svc-list">
+        <li>Smart email drip campaigns with behavioural segmentation</li>
+        <li>WhatsApp broadcasts and automated follow-up flows</li>
+        <li>Trigger-based messages delivered at precisely the right moment</li>
+      </ul>
+      <a href="https://wa.me/918587038293?text=Hi%2C%20I%20want%20marketing%20automation" target="_blank" class="svc-btn">Get Started →</a>
+    </div>
+
+    <div class="svc-card reveal">
+      <div class="svc-ico">🗂️</div>
+      <div class="svc-name">CRM Setup &amp; Integration</div>
+      <p class="svc-desc">Stop losing leads in spreadsheets. We configure your CRM so every opportunity is tracked, followed up, and closed without slipping through.</p>
+      <ul class="svc-list">
+        <li>Full setup — GoHighLevel, Zoho, HubSpot, and more</li>
+        <li>Lead pipelines, deal stages, and automated task flows</li>
+        <li>Team onboarding and dedicated ongoing technical support</li>
+      </ul>
+      <a href="https://wa.me/918587038293?text=Hi%2C%20I%20need%20CRM%20setup" target="_blank" class="svc-btn">Get Started →</a>
+    </div>
+
+    <div class="svc-card reveal">
+      <div class="svc-ico">💬</div>
+      <div class="svc-name">WhatsApp Automation</div>
+      <p class="svc-desc">Turn India's most-used app into your 24/7 sales assistant. Intelligent chatbots, instant replies, and systematic lead nurturing — all on WhatsApp.</p>
+      <ul class="svc-list">
+        <li>AI-powered WhatsApp chatbot setup and deployment</li>
+        <li>Auto-replies, welcome sequences, and appointment booking</li>
+        <li>Broadcast campaigns for promotions and lead re-engagement</li>
+      </ul>
+      <a href="https://wa.me/918587038293?text=Hi%2C%20I%20want%20WhatsApp%20automation" target="_blank" class="svc-btn">Get Started →</a>
+    </div>
+
+    <div class="svc-card reveal">
+      <div class="svc-pill">TRENDING</div>
+      <div class="svc-ico">🖥️</div>
+      <div class="svc-name">Landing Page Design &amp; Optimisation</div>
+      <p class="svc-desc">Your ad clicks are only as valuable as the page they land on. We build fast, mobile-first pages engineered to convert — not just to look impressive.</p>
+      <ul class="svc-list">
+        <li>Mobile-first design with sub-2-second load times</li>
+        <li>Professional, conversion-focused copywriting included</li>
+        <li>Heatmap analysis, A/B testing, and ongoing optimisation</li>
+      </ul>
+      <a href="https://wa.me/918587038293?text=Hi%2C%20I%20want%20a%20landing%20page%20designed" target="_blank" class="svc-btn">Get Started →</a>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== WHY US ===== -->
+<section id="why">
+  <div class="sec-tag">Why ROI Maze</div>
+  <h2>Results Over <em>Promises.</em><br>Always.</h2>
+  <p class="sec-sub">Many agencies talk about results. We are built around them — here is what genuinely sets us apart.</p>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-ico">📊</div>
+      <div class="why-ttl">Data-Driven Decisions</div>
+      <p class="why-txt">Every decision is grounded in numbers — A/B tests, conversion analytics, heatmaps. We follow data, not assumptions or intuition.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-ico">🔁</div>
+      <div class="why-ttl">Full-Funnel Thinking</div>
+      <p class="why-txt">We design and optimise the entire customer journey — from first impression to signed client — as a single, cohesive system.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-ico">⚡</div>
+      <div class="why-ttl">Automation-First Approach</div>
+      <p class="why-txt">While others manage manually, our automation keeps your business generating and nurturing leads around the clock without additional headcount.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-ico">📞</div>
+      <div class="why-ttl">Dedicated Account Manager</div>
+      <p class="why-txt">A single, knowledgeable point of contact for your account. WhatsApp same-day responses guaranteed. You will never be left chasing updates.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-ico">💰</div>
+      <div class="why-ttl">ROI-Focused Metrics Only</div>
+      <p class="why-txt">We track CPL, ROAS, and actual revenue — not impressions or likes. If a metric does not affect your bottom line, we ignore it.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-ico">🏆</div>
+      <div class="why-ttl">Deep Local Market Knowledge</div>
+      <p class="why-txt">We understand Delhi NCR audiences — their buying behaviour, preferred platforms, and price sensitivity. Local strategies that truly work locally.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-ico">🛡️</div>
+      <div class="why-ttl">Complete Transparency</div>
+      <p class="why-txt">Weekly reports, live campaign dashboards, zero hidden fees. You see exactly what is happening with your investment at all times.</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-ico">🚀</div>
+      <div class="why-ttl">7-Day Execution Speed</div>
+      <p class="why-txt">From strategy approval to campaigns live in 7 days. No drawn-out onboarding. Execution speed is a competitive advantage — we use it.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== PROCESS ===== -->
+<section id="process">
+  <div style="text-align:center">
+    <div class="sec-tag" style="justify-content:center">How We Work</div>
+    <h2 style="text-align:center">From Day One to <em>Consistent Results</em></h2>
+    <p class="sec-sub" style="text-align:center;margin:0 auto 68px">A clear, proven four-step process with no ambiguity and no delays.</p>
+  </div>
+  <div class="proc-wrap">
+    <div class="proc-step reveal">
+      <div class="proc-num">01</div>
+      <div class="proc-ttl">Discovery Call</div>
+      <p class="proc-desc">A focused 30-minute session to understand your business, goals, target audience, and current challenges. No sales pitch — pure strategy.</p>
+    </div>
+    <div class="proc-step reveal">
+      <div class="proc-num">02</div>
+      <div class="proc-ttl">Custom Strategy</div>
+      <p class="proc-desc">We build a tailored marketing plan around your industry, budget, and objectives. No templates — every strategy is crafted specifically for you.</p>
+    </div>
+    <div class="proc-step reveal">
+      <div class="proc-num">03</div>
+      <div class="proc-ttl">Execution</div>
+      <p class="proc-desc">Ads launched, funnels live, automations active — all executed systematically within 7 days. You focus on clients; we focus on the system.</p>
+    </div>
+    <div class="proc-step reveal">
+      <div class="proc-num">04</div>
+      <div class="proc-ttl">Optimise &amp; Scale</div>
+      <p class="proc-desc">Continuous iteration every month — we scale what works and refine what does not. Results compound as our campaign data deepens.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section id="testimonials">
+  <div class="sec-tag">Client Results</div>
+  <h2>Real Businesses,<br><em>Real Outcomes</em></h2>
+  <p class="sec-sub">Here is what our clients say after partnering with ROI Maze.</p>
+  <div class="testi-grid">
+
+    <div class="testi-card reveal">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-quote">"</div>
+      <p class="t-text">We were running Facebook ads blindly and burning through budget. ROI Maze restructured our entire Meta strategy — in the first month we received 47 qualified leads with 12 direct conversions. We are now scaling confidently for the first time.</p>
+      <div class="t-author"><div class="t-av">RK</div><div><div class="t-name">Rahul Kapoor</div><div class="t-role">Real Estate Consultant, Gurgaon</div></div></div>
+    </div>
+
+    <div class="testi-card reveal">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-quote">"</div>
+      <p class="t-text">I had a coaching business but no consistent lead flow. ROI Maze built a complete sales funnel — landing page, WhatsApp automation, everything. I now get 3× more leads and do not have to manually follow up with anyone. Remarkable.</p>
+      <div class="t-author"><div class="t-av">PS</div><div><div class="t-name">Priya Sharma</div><div class="t-role">Business Coach, Noida</div></div></div>
+    </div>
+
+    <div class="testi-card reveal">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-quote">"</div>
+      <p class="t-text">My dental clinic ran purely on word-of-mouth. Now we book 5–8 new appointments every single day through Meta Ads. The team is incredibly responsive and the results are undeniable. I recommend them without hesitation.</p>
+      <div class="t-author"><div class="t-av">AV</div><div><div class="t-name">Dr. Aditya Verma</div><div class="t-role">Dental Clinic Owner, Delhi</div></div></div>
+    </div>
+
+    <div class="testi-card reveal">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-quote">"</div>
+      <p class="t-text">WhatsApp automation changed everything for us. Leads used to sit for hours without a reply. Now there is an instant response, automatic nurturing, and our closing rate has increased by 40%. Genuinely impressive work from this team.</p>
+      <div class="t-author"><div class="t-av">MK</div><div><div class="t-name">Meera Khanna</div><div class="t-role">Interior Designer, Faridabad</div></div></div>
+    </div>
+
+    <div class="testi-card reveal">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-quote">"</div>
+      <p class="t-text">The CRM setup transformed our sales process completely. Before, leads were getting lost in Excel files. Now our pipeline is crystal clear, follow-ups are automated, and we never miss an opportunity. ROI Maze brought real structure to our business.</p>
+      <div class="t-author"><div class="t-av">SK</div><div><div class="t-name">Sanjay Kumar</div><div class="t-role">Financial Advisor, Dwarka</div></div></div>
+    </div>
+
+    <div class="testi-card reveal">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-quote">"</div>
+      <p class="t-text">As an EdTech startup with a tight budget, we needed real efficiency. ROI Maze delivered — our cost per lead dropped from ₹80 to ₹28 while lead quality actually improved. Their data-driven approach is genuinely different from any agency we have tried before.</p>
+      <div class="t-author"><div class="t-av">NJ</div><div><div class="t-name">Neha Joshi</div><div class="t-role">EdTech Founder, Gurugram</div></div></div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== FAQ ===== -->
+<section id="faq">
+  <div class="sec-tag">FAQ</div>
+  <h2>Your Questions,<br><em>Answered Honestly</em></h2>
+  <p class="sec-sub">The most common concerns business owners have before working with us.</p>
+  <div class="faq-wrap">
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is the minimum budget required for Meta Ads?<span class="faq-icon">+</span></button>
+      <div class="faq-a">We work with a minimum ad spend of ₹15,000 per month. For meaningful and scalable results we recommend ₹30,000 or above. Our management fee is separate and based on your chosen package. We will discuss the most suitable option during your free discovery call.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How long before I start seeing results?<span class="faq-icon">+</span></button>
+      <div class="faq-a">Initial results from Meta Ads typically appear within 7 to 14 days. The first 30 days constitute a testing and optimisation phase. By days 60 to 90 your campaigns are fully refined and producing consistent leads. We are transparent: no overnight miracles, but steady and compounding improvement every month.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Do you only work with Delhi NCR businesses?<span class="faq-icon">+</span></button>
+      <div class="faq-a">Our primary focus is Delhi NCR, where we have deep local market expertise. However, for fully digital services — Meta Ads, sales funnels, automation, and CRM setup — we work with clients across India. Reach out and we will determine together whether we are the right fit.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">I have no marketing experience — can you manage everything?<span class="faq-icon">+</span></button>
+      <div class="faq-a">Absolutely. You need no marketing knowledge whatsoever. We manage everything end-to-end. You will receive a dedicated WhatsApp group with weekly updates. Your only role is to receive leads and speak with prospective clients. We handle every other aspect of the process.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is the contract period? Am I locked in?<span class="faq-icon">+</span></button>
+      <div class="faq-a">We require a minimum three-month commitment because meaningful results take time to build and compound. After that period, we operate on a month-to-month basis. We retain clients through results — not through contractual obligation. That is the confidence we have in our work.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How do you ensure lead quality? Will I receive junk leads?<span class="faq-icon">+</span></button>
+      <div class="faq-a">Lead quality is our highest priority. We use intent-based targeting, optimised form structures, and immediate WhatsApp follow-up automation — which naturally filters out low-intent contacts. We also track lead-to-conversion rates, not just volume, so quality is always measured alongside quantity.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Do you guarantee specific results?<span class="faq-icon">+</span></button>
+      <div class="faq-a">No ethical agency can guarantee specific numbers, as results depend on your market conditions, offer quality, and competitive landscape alongside our own efforts. What we do guarantee is full transparency, rigorous data-driven optimisation, regular reporting, and our absolute best work. Our 98% client retention rate demonstrates that results consistently follow.</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== CTA ===== -->
+<section id="cta-main">
+  <div class="cta-box">
+    <div class="cta-urgency">⚡ Limited Client Slots — April 2026</div>
+    <h2>Stop Waiting.<br><em>Start Growing.</em></h2>
+    <p>Every day you delay is another day your competitor gains ground. Book a free 30-minute strategy session and we will show you exactly what your business is missing — and precisely how to fix it.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/918587038293?text=Hi%2C%20I%20want%20a%20free%20strategy%20session%20for%20my%20business" target="_blank" class="btn-primary">💬 WhatsApp Us — Book Free Session</a>
+      <a href="tel:+918587038293" class="btn-secondary">📞 Call: +91 85870 38293</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="sec-tag">Get In Touch</div>
+  <h2>Let's Talk <em>Today</em></h2>
+  <p class="sec-sub">Book a free 30-minute strategy session. We will understand your business and deliver a clear growth roadmap — at no cost to you.</p>
+  <div class="contact-layout">
+    <div>
+      <a href="tel:+918587038293" class="contact-link">
+        <div class="c-ico ico-phone">📞</div>
+        <div><div class="c-lbl">Call Us</div><div class="c-val">+91 85870 38293</div></div>
+      </a>
+      <a href="mailto:roimaze7@gmail.com" class="contact-link">
+        <div class="c-ico ico-mail">📧</div>
+        <div><div class="c-lbl">Email Us</div><div class="c-val">roimaze7@gmail.com</div></div>
+      </a>
+      <a href="https://wa.me/918587038293" target="_blank" class="contact-link">
+        <div class="c-ico ico-wa">💬</div>
+        <div><div class="c-lbl">WhatsApp</div><div class="c-val">wa.me/918587038293</div></div>
+      </a>
+    </div>
+    <div class="c-form">
+      <div class="c-form-title">Book Your Free Consultation 🚀</div>
+      <div class="fg"><label>Your Name</label><input type="text" placeholder="e.g. Rahul Sharma"></div>
+      <div class="fg"><label>Phone / WhatsApp Number</label><input type="tel" placeholder="+91 98765 43210"></div>
+      <div class="fg">
+        <label>Business Type</label>
+        <select>
+          <option value="">Select your industry...</option>
+          <option>Coaching / Consulting</option>
+          <option>Real Estate</option>
+          <option>Healthcare / Clinic</option>
+          <option>Education / EdTech</option>
+          <option>E-commerce</option>
+          <option>Local Service Business</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="fg"><label>What do you need help with? (optional)</label><textarea rows="3" placeholder="e.g. Meta Ads, Lead Generation, Sales Funnel..."></textarea></div>
+      <button class="f-submit" onclick="submitForm()">🎯 Book Free Strategy Session</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">ROI<span>Maze</span></div>
+  <small>© 2026 ROI Maze. All rights reserved. Delhi NCR, India.</small>
+  <div class="foot-links">
+    <a href="mailto:roimaze7@gmail.com">Email</a>
+    <a href="tel:+918587038293">Call</a>
+    <a href="https://wa.me/918587038293" target="_blank">WhatsApp</a>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(btn){
+  const item=btn.closest('.faq-item');
+  const open=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!open) item.classList.add('open');
+}
+function submitForm(){
+  const name=document.querySelector('.c-form input[type="text"]').value.trim();
+  const phone=document.querySelector('.c-form input[type="tel"]').value.trim();
+  if(!name||!phone){alert('Please enter your name and phone number.');return;}
+  const msg=`Hi ROI Maze! My name is ${name}. Phone: ${phone}. I would like to book a free strategy session.`;
+  window.open(`https://wa.me/918587038293?text=${encodeURIComponent(msg)}`,'_blank');
+}
+function toggleMenu(btn){
+  const ul=document.querySelector('nav ul');
+  const open=ul.getAttribute('data-open')==='1';
+  if(open){ul.removeAttribute('style');ul.removeAttribute('data-open');}
+  else{Object.assign(ul.style,{display:'flex',flexDirection:'column',position:'absolute',top:'64px',left:'0',right:'0',background:'rgba(4,4,10,0.97)',padding:'20px 6%',gap:'18px',borderBottom:'1px solid rgba(124,77,255,.15)',zIndex:'199'});ul.setAttribute('data-open','1');}
+}
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
+  });
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach((el,i)=>{
+  el.style.transitionDelay=(i%4)*75+'ms';
+  io.observe(el);
+});
+</script>
+</body>
+</html>
